@@ -11,7 +11,7 @@ Component
 import Image from './image.jpg';
 import {Zoom} from "./zoom";
 
-function() App {
+function App() {
     return (
         <div className="App">
             <Zoom
