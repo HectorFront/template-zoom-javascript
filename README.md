@@ -61,7 +61,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 #### vanilla-zoom
 
-Open [index.html](https://github.com/HectorFront/template-zoom-javascript/blob/main/vanilla-zoom/index.html) to view it in your browser.
+Open [vanilla-zoom/index.html](https://github.com/HectorFront/template-zoom-javascript/blob/main/vanilla-zoom/index.html) to view it in your browser.
 <hr/>
 
 **About**
