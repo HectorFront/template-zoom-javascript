@@ -25,6 +25,7 @@ function() App {
 ## Vanilla JS
 HTML
 <hr/>
+
 ```css
 .zoom {
     cursor: default;
