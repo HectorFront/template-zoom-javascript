@@ -33,6 +33,7 @@ HTML
     background-image: url("image.jpg");
 }
 ```
+
 ```javascript
 <body>
     <div class="App">
