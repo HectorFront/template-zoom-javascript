@@ -25,7 +25,14 @@ function() App {
 ## Vanilla JS
 HTML
 <hr/>
-
+```css
+.zoom {
+    cursor: default;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("image.jpg");
+}
+```
 ```javascript
 <body>
     <div class="App">
