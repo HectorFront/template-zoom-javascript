@@ -19,9 +19,9 @@ export const Zoom = ({image}) => {
     },[]);
 
     /**
-     *
-     * If dimensions of image contains valid relation in height and width with image container
-     * @type {(function(): void)|*}
+     * If dimensions of image contains valid relation in height and width with image container   
+     * @param currentTarget
+     * @param nativeEvent
      */
     const setZoom = useCallback(({currentTarget, nativeEvent}) => {
         const points = nativeEvent, container = currentTarget;
@@ -50,8 +50,8 @@ export const Zoom = ({image}) => {
 
     /**
      *
-     * @param currentTarget
-     * @param nativeEvent
+     * @param container
+     * @param points
      */
     const zoomMove = useCallback((container, points) => {
         const x = points.offsetX / container.offsetWidth * 100;
