@@ -7,10 +7,8 @@ export const Zoom = ({image}) => {
 
     /**
      *
-     * @param container
-     * @param cursor
-     * @param size
-     * @param position
+     * @param element
+     * @param style
      */
     const setStyle = useCallback((element, style) => {
         for(let prop in style) {
@@ -20,8 +18,7 @@ export const Zoom = ({image}) => {
 
     /**
      * If dimensions of image contains valid relation in height and width with image container   
-     * @param currentTarget
-     * @param nativeEvent
+     * @type {function({currentTarget: *,  nativeEvent: *}): void}
      */
     const setZoom = useCallback(({currentTarget, nativeEvent}) => {
         const points = nativeEvent, container = currentTarget;
