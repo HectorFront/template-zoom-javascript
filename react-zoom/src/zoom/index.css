@@ -3,7 +3,7 @@
     width: 700px;
 }
 
-.zoom {
+.container .zoom {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -14,7 +14,7 @@
     background-repeat: no-repeat;
 }
 
-.image__preview {
+.container .image__preview {
     width: 100%;
     display: block;
 }

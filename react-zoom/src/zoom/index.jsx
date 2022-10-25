@@ -1,7 +1,7 @@
 import './index.css';
-import {useRef, useCallback} from 'react';
+import { useRef, useCallback } from 'react';
 
-export const Zoom = ({image}) => {
+export const Zoom = ({ image }) => {
 
     const refImagePreview = useRef(null);
 
@@ -12,37 +12,10 @@ export const Zoom = ({image}) => {
      */
     const setStyle = useCallback((element, style) => {
         for(let prop in style) {
-            element.style[prop] = style[prop];
+            if(style.hasOwnProperty(prop)) {
+                element.style[prop] = style[prop];
+            }
         }
-    },[]);
-
-    /**
-     * If dimensions of image contains valid relation in height and width with image container   
-     * @type {function({currentTarget: *,  nativeEvent: *}): void}
-     */
-    const setZoom = useCallback(({currentTarget, nativeEvent}) => {
-        const points = nativeEvent, container = currentTarget;
-        const relativeDimensions = (
-            container.offsetWidth <= refImagePreview.current.naturalWidth &&
-            container.offsetHeight <= refImagePreview.current.naturalHeight
-        );
-        if(relativeDimensions) {
-            setStyle(refImagePreview.current, {opacity: 0});
-            return zoomMove(container, points);
-        }
-    },[]);
-
-    /**
-     *
-     * @type {function({currentTarget: *}): void}
-     */
-    const leaveZoom = useCallback(({currentTarget}) => {
-        const style = {
-            cursor: 'default',
-            backgroundSize: 'cover',
-            backgroundPosition: 'unset'
-        };
-        return setStyle(currentTarget, style);
     },[]);
 
     /**
@@ -59,7 +32,36 @@ export const Zoom = ({image}) => {
             backgroundPosition: `${x}% ${y}%`
         };
         return setStyle(container, style);
-    },[]);
+    },[ setStyle ]);
+
+    /**
+     *
+     * @type {function({currentTarget: *}): void}
+     */
+    const leaveZoom = useCallback(({currentTarget}) => {
+        const style = {
+            cursor: 'default',
+            backgroundSize: 'cover',
+            backgroundPosition: 'unset'
+        };
+        return setStyle(currentTarget, style);
+    },[ setStyle ]);
+
+    /**
+     * If dimensions of image contains valid relation in height and width with image container
+     * @type {function({currentTarget: *,  nativeEvent: *}): void}
+     */
+    const setZoom = useCallback(({currentTarget, nativeEvent}) => {
+        const points = nativeEvent, container = currentTarget;
+        const relativeDimensions = (
+            container.offsetWidth <= refImagePreview.current.naturalWidth &&
+            container.offsetHeight <= refImagePreview.current.naturalHeight
+        );
+        if(relativeDimensions) {
+            setStyle(refImagePreview.current, { opacity: 0 });
+            return zoomMove(container, points);
+        }
+    },[ setStyle, zoomMove ]);
 
     return (
         <div className="container">
@@ -67,9 +69,10 @@ export const Zoom = ({image}) => {
                 className="zoom"
                 onMouseMove={setZoom}
                 onMouseLeave={leaveZoom}
-                style={{backgroundImage: `url(${image})`}}
+                style={{ backgroundImage: `url(${image})` }}
             >
                 <img
+                    data-testid="zoom"
                     alt="zoom"
                     src={image}
                     ref={refImagePreview}

@@ -1,6 +1,6 @@
 import './App.css';
 import Image from './image.jpg';
-import {Zoom} from "./zoom";
+import { Zoom } from "./zoom";
 
 function App() {
   return (
